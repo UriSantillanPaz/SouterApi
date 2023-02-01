@@ -1,0 +1,12 @@
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\Services_WebApi.dll.config
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\Services_WebApi.dll
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\Services_WebApi.pdb
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\EntityFramework.dll
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\EntityFramework.xml
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\obj\Release\Services_WebApi.csproj.AssemblyReference.cache
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\obj\Release\Services_WebApi.csproj.CoreCompileInputs.cache
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\obj\Release\Services_WebApi.csproj.CopyComplete
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\obj\Release\Services_WebApi.dll
+C:\Users\uriel\source\repos\SouterApi\Services_WebApi\obj\Release\Services_WebApi.pdb
