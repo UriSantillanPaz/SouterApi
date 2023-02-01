@@ -9,7 +9,6 @@ namespace Services_WebApi.Services
 {
     public class ServicesUsuarios
     {
-        //1.Obtenemos la conexion a la base de datos
         private SouterDBEntities entities = new SouterDBEntities();
         public usuarios GetById(int id)
         {

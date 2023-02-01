@@ -12,10 +12,8 @@ namespace SouterApi.Controllers
 {
     public class usuariosController : ApiController
     {
-        //3. Establecemos la cadena de conexion
         private SouterDBEntities entities = new SouterDBEntities();
-        //1.Creamos el primer metodo de consulta a la tabla categorias
-        //2.La ruta de consumo deberia ser api/usuarios
+
         public IHttpActionResult Get()
         {
             try
@@ -54,8 +52,6 @@ namespace SouterApi.Controllers
             }
         }
 
-        //se eliminar la entidad a travez de la ruta api/usuarios/{id} 
-        //Es importante decir que la ruta es la misma pero la diferencia entre una y otra se encuentra en la cabeceras... duh
         [HttpDelete]
         public IHttpActionResult DeleteById(int id)
         {
