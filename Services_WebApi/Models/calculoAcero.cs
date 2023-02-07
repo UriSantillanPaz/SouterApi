@@ -32,6 +32,9 @@ namespace Services_WebApi.Models
         public Nullable<double> pesoTocho { get; set; }
         public Nullable<double> pesoSTD { get; set; }
         public Nullable<int> idUsuario { get; set; }
+        public Nullable<System.DateTime> fecha { get; set; }
+        public Nullable<int> piezasCortar { get; set; }
+        public Nullable<int> noBarras { get; set; }
     
         public virtual usuarios usuarios { get; set; }
     }

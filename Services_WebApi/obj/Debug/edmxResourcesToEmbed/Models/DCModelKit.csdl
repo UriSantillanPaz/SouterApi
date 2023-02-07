@@ -31,6 +31,9 @@
     <Property Name="pesoSTD" Type="Double" />
     <Property Name="idUsuario" Type="Int32" />
     <NavigationProperty Name="usuarios" Relationship="SouterDBModel.FK_usuarios_calculoAcero_id" FromRole="calculoAcero" ToRole="usuarios" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="piezasCortar" Type="Int32" />
+    <Property Name="noBarras" Type="Int32" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>

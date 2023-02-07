@@ -22,6 +22,9 @@
     <Property Name="pesoTocho" Type="float" />
     <Property Name="pesoSTD" Type="float" />
     <Property Name="idUsuario" Type="int" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="piezasCortar" Type="int" />
+    <Property Name="noBarras" Type="int" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>

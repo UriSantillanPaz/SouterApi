@@ -42,7 +42,10 @@ namespace SouterApi.Controllers
                     pesoTramo2 = p.pesoTramo2,
                     pesoTocho = p.pesoTocho,
                     pesoSTD = p.pesoSTD,
-                    idUsuario = p.idUsuario
+                    idUsuario = p.idUsuario,
+                    fecha = p.fecha,
+                    piezasCortar = p.piezasCortar,
+                    noBarras = p.noBarras
                 }).ToList();
                 return Ok(calculoAceroSM);
             }
@@ -81,12 +84,15 @@ namespace SouterApi.Controllers
                 CalculoAceroSM.pesoTocho = calculoAcero.pesoTocho;
                 CalculoAceroSM.pesoSTD = calculoAcero.pesoSTD;
                 CalculoAceroSM.idUsuario = calculoAcero.idUsuario;
+                CalculoAceroSM.fecha = calculoAcero.fecha;
+                CalculoAceroSM.piezasCortar = calculoAcero.piezasCortar;
+                CalculoAceroSM.noBarras = calculoAcero.noBarras;
                 return Ok(CalculoAceroSM);
             }
             catch (Exception ex)
             {
                 string mensajeErr = ex.Message;
-                return BadRequest("La petición de consultar por ID de usuarios no se pudo ejecutar");
+                return BadRequest("La petición no se pudo ejecutar");
             }
         }
 
@@ -106,7 +112,7 @@ namespace SouterApi.Controllers
             {
                 string mensajeErr = ex.Message;
                 //En caso de que no funcione mien le avisamos que no se pudo
-                return BadRequest("No se pudo completar la solicitud de eliminar el usuario por ID");
+                return BadRequest("No se pudo completar la solicitud de eliminar");
             }
         }
 
@@ -137,7 +143,9 @@ namespace SouterApi.Controllers
                 calculoAcero.pesoTocho = calculoAceroSM.pesoTocho;
                 calculoAcero.pesoSTD = calculoAceroSM.pesoSTD;
                 calculoAcero.idUsuario = calculoAceroSM.idUsuario;
-
+                calculoAcero.fecha = calculoAceroSM.fecha;
+                calculoAcero.piezasCortar = calculoAceroSM.piezasCortar;
+                calculoAcero.noBarras = calculoAceroSM.noBarras;
                 //creamos el objeto de tipo services para poder realizar el CRUD
                 ServicesCalculoAcero services = new ServicesCalculoAcero();
                 //mandamos la entidad para que se inserte
@@ -147,7 +155,7 @@ namespace SouterApi.Controllers
             catch (Exception ex)
             {
                 string mensajeErr = ex.Message;
-                return BadRequest("No se pudo insertar el usuario :c");
+                return BadRequest("No se pudo completar la peticion");
             }
         }
 
@@ -178,6 +186,9 @@ namespace SouterApi.Controllers
                     pesoTocho = calculoAceroSM.pesoTocho,
                     pesoSTD = calculoAceroSM.pesoSTD,
                     idUsuario = calculoAceroSM.idUsuario,
+                    fecha = calculoAceroSM.fecha,
+                    piezasCortar = calculoAceroSM.piezasCortar,
+                    noBarras = calculoAceroSM.noBarras
                 };
                 services.Update(calculoAcero);
                 return Ok();
@@ -185,7 +196,7 @@ namespace SouterApi.Controllers
             catch (Exception ex)
             {
                 string mensajeErr = ex.Message;
-                return BadRequest("No se pudo actualizar el registro :c");
+                return BadRequest("No se pudo completar la peticion");
             }
         }
     }
