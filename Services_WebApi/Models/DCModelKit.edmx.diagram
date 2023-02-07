@@ -5,7 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3753e0fa8d114e23a9ece7d639c9a08b" Name="Diagram1">
-        <EntityTypeShape EntityType="SouterDBModel.usuarios" Width="1.5" PointX="1.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SouterDBModel.calculoAcero" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="SouterDBModel.usuarios" Width="1.5" PointX="0.75" PointY="2.5" />
+        <AssociationConnector Association="SouterDBModel.FK_usuarios_calculoAcero_id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

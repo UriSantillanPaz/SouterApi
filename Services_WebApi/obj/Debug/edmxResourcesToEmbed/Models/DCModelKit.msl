@@ -1,12 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="SouterDBModelStoreContainer" CdmEntityContainer="SouterDBEntities">
+    <EntitySetMapping Name="calculoAcero">
+      <EntityTypeMapping TypeName="SouterDBModel.calculoAcero">
+        <MappingFragment StoreEntitySet="calculoAcero">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="pesoSTD" ColumnName="pesoSTD" />
+          <ScalarProperty Name="pesoTocho" ColumnName="pesoTocho" />
+          <ScalarProperty Name="pesoTramo2" ColumnName="pesoTramo2" />
+          <ScalarProperty Name="piezasBarra" ColumnName="piezasBarra" />
+          <ScalarProperty Name="piezasTocho" ColumnName="piezasTocho" />
+          <ScalarProperty Name="tochosBarra" ColumnName="tochosBarra" />
+          <ScalarProperty Name="tochosTramo" ColumnName="tochosTramo" />
+          <ScalarProperty Name="longTocho" ColumnName="longTocho" />
+          <ScalarProperty Name="pesoTramo" ColumnName="pesoTramo" />
+          <ScalarProperty Name="longBarra" ColumnName="longBarra" />
+          <ScalarProperty Name="kgsMetro" ColumnName="kgsMetro" />
+          <ScalarProperty Name="calidadAcero" ColumnName="calidadAcero" />
+          <ScalarProperty Name="tipoAcero" ColumnName="tipoAcero" />
+          <ScalarProperty Name="codigoAcero" ColumnName="codigoAcero" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="SouterDBModel.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

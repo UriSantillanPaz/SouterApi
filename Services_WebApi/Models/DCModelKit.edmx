@@ -4,7 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SouterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SouterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="calculoAcero">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="int" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="codigoAcero" Type="int" />
+          <Property Name="tipoAcero" Type="nvarchar" MaxLength="255" />
+          <Property Name="calidadAcero" Type="int" />
+          <Property Name="kgsMetro" Type="float" />
+          <Property Name="longBarra" Type="float" />
+          <Property Name="pesoTramo" Type="float" />
+          <Property Name="longTocho" Type="float" />
+          <Property Name="tochosTramo" Type="float" />
+          <Property Name="tochosBarra" Type="int" />
+          <Property Name="piezasTocho" Type="int" />
+          <Property Name="piezasBarra" Type="int" />
+          <Property Name="pesoTramo2" Type="float" />
+          <Property Name="pesoTocho" Type="float" />
+          <Property Name="pesoSTD" Type="float" />
+          <Property Name="idUsuario" Type="int" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id" />
@@ -13,14 +36,62 @@
           <Property Name="username" Type="varchar" MaxLength="255" />
           <Property Name="clave" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK_usuarios_calculoAcero_id">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="calculoAcero" Type="Self.calculoAcero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="calculoAcero">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SouterDBModelStoreContainer">
+          <EntitySet Name="calculoAcero" EntityType="Self.calculoAcero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_usuarios_calculoAcero_id" Association="Self.FK_usuarios_calculoAcero_id">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="calculoAcero" EntitySet="calculoAcero" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SouterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SouterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="calculoAcero" EntityType="SouterDBModel.calculoAcero" />
+          <EntitySet Name="usuarios" EntityType="SouterDBModel.usuarios" />
+          <AssociationSet Name="FK_usuarios_calculoAcero_id" Association="SouterDBModel.FK_usuarios_calculoAcero_id">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="calculoAcero" EntitySet="calculoAcero" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="calculoAcero">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="codigoAcero" Type="Int32" />
+          <Property Name="tipoAcero" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="calidadAcero" Type="Int32" />
+          <Property Name="kgsMetro" Type="Double" />
+          <Property Name="longBarra" Type="Double" />
+          <Property Name="pesoTramo" Type="Double" />
+          <Property Name="longTocho" Type="Double" />
+          <Property Name="tochosTramo" Type="Double" />
+          <Property Name="tochosBarra" Type="Int32" />
+          <Property Name="piezasTocho" Type="Int32" />
+          <Property Name="piezasBarra" Type="Int32" />
+          <Property Name="pesoTramo2" Type="Double" />
+          <Property Name="pesoTocho" Type="Double" />
+          <Property Name="pesoSTD" Type="Double" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="usuarios" Relationship="SouterDBModel.FK_usuarios_calculoAcero_id" FromRole="calculoAcero" ToRole="usuarios" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="id" />
@@ -28,22 +99,56 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="clave" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="calculoAcero" Relationship="SouterDBModel.FK_usuarios_calculoAcero_id" FromRole="usuarios" ToRole="calculoAcero" />
         </EntityType>
-        <EntityContainer Name="SouterDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
-        </EntityContainer>
+        <Association Name="FK_usuarios_calculoAcero_id">
+          <End Type="SouterDBModel.usuarios" Role="usuarios" Multiplicity="0..1" />
+          <End Type="SouterDBModel.calculoAcero" Role="calculoAcero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="calculoAcero">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SouterDBModelStoreContainer" CdmEntityContainer="SouterDBEntities">
+          <EntitySetMapping Name="calculoAcero">
+            <EntityTypeMapping TypeName="SouterDBModel.calculoAcero">
+              <MappingFragment StoreEntitySet="calculoAcero">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="pesoSTD" ColumnName="pesoSTD" />
+                <ScalarProperty Name="pesoTocho" ColumnName="pesoTocho" />
+                <ScalarProperty Name="pesoTramo2" ColumnName="pesoTramo2" />
+                <ScalarProperty Name="piezasBarra" ColumnName="piezasBarra" />
+                <ScalarProperty Name="piezasTocho" ColumnName="piezasTocho" />
+                <ScalarProperty Name="tochosBarra" ColumnName="tochosBarra" />
+                <ScalarProperty Name="tochosTramo" ColumnName="tochosTramo" />
+                <ScalarProperty Name="longTocho" ColumnName="longTocho" />
+                <ScalarProperty Name="pesoTramo" ColumnName="pesoTramo" />
+                <ScalarProperty Name="longBarra" ColumnName="longBarra" />
+                <ScalarProperty Name="kgsMetro" ColumnName="kgsMetro" />
+                <ScalarProperty Name="calidadAcero" ColumnName="calidadAcero" />
+                <ScalarProperty Name="tipoAcero" ColumnName="tipoAcero" />
+                <ScalarProperty Name="codigoAcero" ColumnName="codigoAcero" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="SouterDBModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

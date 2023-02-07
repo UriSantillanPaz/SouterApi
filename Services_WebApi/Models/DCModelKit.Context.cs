@@ -25,6 +25,7 @@ namespace Services_WebApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<calculoAcero> calculoAcero { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
     }
 }

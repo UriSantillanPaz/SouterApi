@@ -1,5 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SouterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SouterDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="calculoAcero" EntityType="SouterDBModel.calculoAcero" />
+    <EntitySet Name="usuarios" EntityType="SouterDBModel.usuarios" />
+    <AssociationSet Name="FK_usuarios_calculoAcero_id" Association="SouterDBModel.FK_usuarios_calculoAcero_id">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="calculoAcero" EntitySet="calculoAcero" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="calculoAcero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="codigoAcero" Type="Int32" />
+    <Property Name="tipoAcero" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="calidadAcero" Type="Int32" />
+    <Property Name="kgsMetro" Type="Double" />
+    <Property Name="longBarra" Type="Double" />
+    <Property Name="pesoTramo" Type="Double" />
+    <Property Name="longTocho" Type="Double" />
+    <Property Name="tochosTramo" Type="Double" />
+    <Property Name="tochosBarra" Type="Int32" />
+    <Property Name="piezasTocho" Type="Int32" />
+    <Property Name="piezasBarra" Type="Int32" />
+    <Property Name="pesoTramo2" Type="Double" />
+    <Property Name="pesoTocho" Type="Double" />
+    <Property Name="pesoSTD" Type="Double" />
+    <Property Name="idUsuario" Type="Int32" />
+    <NavigationProperty Name="usuarios" Relationship="SouterDBModel.FK_usuarios_calculoAcero_id" FromRole="calculoAcero" ToRole="usuarios" />
+  </EntityType>
   <EntityType Name="usuarios">
     <Key>
       <PropertyRef Name="id" />
@@ -7,8 +39,18 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="clave" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="calculoAcero" Relationship="SouterDBModel.FK_usuarios_calculoAcero_id" FromRole="usuarios" ToRole="calculoAcero" />
   </EntityType>
-  <EntityContainer Name="SouterDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="usuarios" EntityType="Self.usuarios" />
-  </EntityContainer>
+  <Association Name="FK_usuarios_calculoAcero_id">
+    <End Type="SouterDBModel.usuarios" Role="usuarios" Multiplicity="0..1" />
+    <End Type="SouterDBModel.calculoAcero" Role="calculoAcero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calculoAcero">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\calculoAcero.cs">
+      <DependentUpon>DCModelKit.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DCModelKit.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,6 +75,7 @@
       <DependentUpon>DCModelKit.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServicesCalculoAcero.cs" />
     <Compile Include="Services\ServicesUsuarios.cs" />
   </ItemGroup>
   <ItemGroup>

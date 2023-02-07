@@ -1,5 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SouterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="calculoAcero">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="codigo" Type="int" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="255" />
+    <Property Name="codigoAcero" Type="int" />
+    <Property Name="tipoAcero" Type="nvarchar" MaxLength="255" />
+    <Property Name="calidadAcero" Type="int" />
+    <Property Name="kgsMetro" Type="float" />
+    <Property Name="longBarra" Type="float" />
+    <Property Name="pesoTramo" Type="float" />
+    <Property Name="longTocho" Type="float" />
+    <Property Name="tochosTramo" Type="float" />
+    <Property Name="tochosBarra" Type="int" />
+    <Property Name="piezasTocho" Type="int" />
+    <Property Name="piezasBarra" Type="int" />
+    <Property Name="pesoTramo2" Type="float" />
+    <Property Name="pesoTocho" Type="float" />
+    <Property Name="pesoSTD" Type="float" />
+    <Property Name="idUsuario" Type="int" />
+  </EntityType>
   <EntityType Name="usuarios">
     <Key>
       <PropertyRef Name="id" />
@@ -8,7 +31,24 @@
     <Property Name="username" Type="varchar" MaxLength="255" />
     <Property Name="clave" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <Association Name="FK_usuarios_calculoAcero_id">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="calculoAcero" Type="Self.calculoAcero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calculoAcero">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="SouterDBModelStoreContainer">
+    <EntitySet Name="calculoAcero" EntityType="Self.calculoAcero" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_usuarios_calculoAcero_id" Association="Self.FK_usuarios_calculoAcero_id">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="calculoAcero" EntitySet="calculoAcero" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
