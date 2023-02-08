@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace SouterApi.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class usuariosController : ApiController
     {
         private SouterDBEntities entities = new SouterDBEntities();

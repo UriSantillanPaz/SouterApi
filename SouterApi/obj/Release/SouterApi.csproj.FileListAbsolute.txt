@@ -90,3 +90,6 @@ C:\Users\uriel\source\repos\SouterApi\SouterApi\obj\Release\SouterApi.csproj.Cor
 C:\Users\uriel\source\repos\SouterApi\SouterApi\obj\Release\SouterApi.csproj.CopyComplete
 C:\Users\uriel\source\repos\SouterApi\SouterApi\obj\Release\SouterApi.dll
 C:\Users\uriel\source\repos\SouterApi\SouterApi\obj\Release\SouterApi.pdb
+C:\Users\uriel\source\repos\SouterApi\SouterApi\bin\System.Web.Cors.dll
+C:\Users\uriel\source\repos\SouterApi\SouterApi\bin\System.Web.Http.Cors.dll
+C:\Users\uriel\source\repos\SouterApi\SouterApi\bin\System.Web.Http.Cors.xml
