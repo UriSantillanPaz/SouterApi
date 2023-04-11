@@ -30,6 +30,7 @@
           <Property Name="fecha" Type="date" />
           <Property Name="piezasCortar" Type="int" />
           <Property Name="noBarras" Type="int" />
+          <Property Name="colada" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
@@ -97,6 +98,7 @@
           <Property Name="fecha" Type="DateTime" Precision="0" />
           <Property Name="piezasCortar" Type="Int32" />
           <Property Name="noBarras" Type="Int32" />
+          <Property Name="colada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
@@ -128,6 +130,7 @@
           <EntitySetMapping Name="calculoAcero">
             <EntityTypeMapping TypeName="SouterDBModel.calculoAcero">
               <MappingFragment StoreEntitySet="calculoAcero">
+                <ScalarProperty Name="colada" ColumnName="colada" />
                 <ScalarProperty Name="noBarras" ColumnName="noBarras" />
                 <ScalarProperty Name="piezasCortar" ColumnName="piezasCortar" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />

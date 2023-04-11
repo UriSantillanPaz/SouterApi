@@ -91,6 +91,7 @@ namespace Services_WebApi.Services
                 entidadCalculoAcero.fecha = calculoAcero.fecha;
                 entidadCalculoAcero.piezasCortar = calculoAcero.piezasCortar;
                 entidadCalculoAcero.noBarras = calculoAcero.noBarras;
+                entidadCalculoAcero.colada = calculoAcero.colada;
                 //No agregamos la llave foranea (idUsuario) del usuario por que es algo que no va a poder modificar
                 //Se modifican las propiedades viejas por la nuevas  pero el id se deja tal y como esta
                 //finalmente se actualiza la entidad en la base de datos

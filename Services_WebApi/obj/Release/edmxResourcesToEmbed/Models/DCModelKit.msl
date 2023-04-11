@@ -4,6 +4,7 @@
     <EntitySetMapping Name="calculoAcero">
       <EntityTypeMapping TypeName="SouterDBModel.calculoAcero">
         <MappingFragment StoreEntitySet="calculoAcero">
+          <ScalarProperty Name="colada" ColumnName="colada" />
           <ScalarProperty Name="noBarras" ColumnName="noBarras" />
           <ScalarProperty Name="piezasCortar" ColumnName="piezasCortar" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />

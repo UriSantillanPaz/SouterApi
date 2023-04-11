@@ -28,5 +28,6 @@ namespace SouterApi.Models
         public Nullable<System.DateTime> fecha { get; set; }
         public Nullable<int> piezasCortar { get; set; }
         public Nullable<int> noBarras { get; set; }
+        public string colada { get; set; }
     }
 }

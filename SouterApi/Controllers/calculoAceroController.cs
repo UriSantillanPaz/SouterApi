@@ -22,7 +22,7 @@ namespace SouterApi.Controllers
         {
             try
             {
-                //esta es una consulta select * from usuarios, es decir regresamos todos los usuarios que fueron guardados en la tabla usuarios
+                //esta es una consulta select * from calculoAcero, es decir regresamos todos los campos que fueron guardados en la tabla calculoAcero
                 List<calculoAcero> calculoAcero = entities.calculoAcero.ToList();
                 //antes de regresar la secuencia de los datos es necesario mapear los valores a la nueva clase
                 List<CalculoAceroSM> calculoAceroSM = calculoAcero.Select(p => new CalculoAceroSM
@@ -47,7 +47,8 @@ namespace SouterApi.Controllers
                     idUsuario = p.idUsuario,
                     fecha = p.fecha,
                     piezasCortar = p.piezasCortar,
-                    noBarras = p.noBarras
+                    noBarras = p.noBarras,
+                    colada= p.colada
                 }).ToList();
                 return Ok(calculoAceroSM);
             }
@@ -89,6 +90,7 @@ namespace SouterApi.Controllers
                 CalculoAceroSM.fecha = calculoAcero.fecha;
                 CalculoAceroSM.piezasCortar = calculoAcero.piezasCortar;
                 CalculoAceroSM.noBarras = calculoAcero.noBarras;
+                CalculoAceroSM.colada = calculoAcero.colada;
                 return Ok(CalculoAceroSM);
             }
             catch (Exception ex)
@@ -148,6 +150,7 @@ namespace SouterApi.Controllers
                 calculoAcero.fecha = calculoAceroSM.fecha;
                 calculoAcero.piezasCortar = calculoAceroSM.piezasCortar;
                 calculoAcero.noBarras = calculoAceroSM.noBarras;
+                calculoAcero.colada = calculoAceroSM.colada;
                 //creamos el objeto de tipo services para poder realizar el CRUD
                 ServicesCalculoAcero services = new ServicesCalculoAcero();
                 //mandamos la entidad para que se inserte
@@ -190,7 +193,8 @@ namespace SouterApi.Controllers
                     idUsuario = calculoAceroSM.idUsuario,
                     fecha = calculoAceroSM.fecha,
                     piezasCortar = calculoAceroSM.piezasCortar,
-                    noBarras = calculoAceroSM.noBarras
+                    noBarras = calculoAceroSM.noBarras,
+                    colada = calculoAceroSM.colada
                 };
                 services.Update(calculoAcero);
                 return Ok();

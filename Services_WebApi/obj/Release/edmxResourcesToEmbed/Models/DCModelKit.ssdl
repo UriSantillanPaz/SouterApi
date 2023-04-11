@@ -25,6 +25,7 @@
     <Property Name="fecha" Type="date" />
     <Property Name="piezasCortar" Type="int" />
     <Property Name="noBarras" Type="int" />
+    <Property Name="colada" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="usuarios">
     <Key>
